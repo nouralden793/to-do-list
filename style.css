@@ -1,0 +1,378 @@
+html {
+  background-color: #06101e;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #1a1820;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #2a6fd7;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #2055a5;
+}
+
+.background {
+  background: url(./layered-waves-haikei.svg) no-repeat bottom;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.title {
+  color: white;
+  margin-bottom: 0;
+  text-align: center;
+  font-size: 40px;
+  position: relative;
+  width: fit-content;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.title::before {
+  content: "";
+  position: absolute;
+  bottom: -7px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  border: 2px solid white;
+  height: 0;
+  width: 200px;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+
+.title::after {
+  content: "";
+  position: absolute;
+  bottom: -13px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #06101e;
+  height: 10px;
+  width: 10px;
+  border: 3px solid white;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.title:hover::after {
+  animation: rightBullet 2s ease alternate;
+}
+
+.title:hover::before {
+  animation: leftBullet 2s ease alternate;
+}
+
+.todo {
+  margin: 50px auto;
+  margin-top: 45px;
+  position: relative;
+  max-width: 700px;
+}
+
+.todo form {
+  display: flex;
+  background-color: #ffffff59;
+  padding: 20px;
+  border-radius: 6px;
+  position: relative;
+}
+
+@media (max-width: 767px) {
+  .todo {
+    margin: 50px 10px;
+  }
+  .todo form {
+    padding: 15px;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .todo form .inputAdd {
+    font-size: 16px;
+    padding: 7px 10px !important;
+  }
+  .todo form .inputText {
+    margin-right: 0 !important;
+    padding: 10px 15px !important;
+  }
+  .todo .tasks {
+    padding: 15px !important;
+  }
+  .todo .tasks .task {
+    text-align: center;
+    flex-direction: column;
+    gap: 10px !important;
+  }
+  .todo .tasks .task .right {
+    right: 51% !important;
+    top: 72% !important;
+    width: 45%;
+  }
+  .todo .tasks .task .del {
+    right: 4% !important;
+    top: 72% !important;
+    width: 45%;
+  }
+  .todo .tasks .task > div {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+.todo form .inputText {
+  flex: 1;
+  margin-right: 10px;
+  border: none;
+  outline: none;
+  padding: 8px;
+  font-size: 17px;
+  border-radius: 5px;
+  border: 3px solid white;
+  caret-color: #ffa154;
+  transition: 0.25s;
+}
+
+.todo form .inputText:hover {
+  border: 3px solid #f56538;
+}
+
+.todo form .noText {
+  position: absolute;
+  top: -1%;
+  width: 206px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  border: 3px solid red;
+  padding: 3px 8px;
+  font-weight: bold;
+  border-radius: 6px;
+  font-size: 15px;
+  overflow: hidden;
+  margin: 0;
+  transition: 0.3s;
+}
+
+@media (min-width: 767px) {
+  .todo form .noText {
+    left: 45%;
+  }
+}
+
+.todo form .inputAdd {
+  color: white;
+  background-color: #2a6fd7;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  border: 3px solid #2a6fd7;
+  transition: 0.3s;
+}
+
+.todo form .inputAdd:hover {
+  background-color: #2a6bcc;
+  border: 3px solid #ffffff8f;
+}
+
+.todo .tasks {
+  padding: 20px;
+  background-color: #ffffff59;
+  margin-top: 30px;
+  border-radius: 6px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.todo .tasks .task {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  background-color: white;
+  padding: 12px;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -ms-transition: 0.3s;
+  -o-transition: 0.3s;
+  cursor: pointer;
+  position: relative;
+  border: 2px solid white;
+  color: white;
+  order: 1;
+  text-shadow: 0 0 12px black;
+  background: url(./sunrise.jpg) center no-repeat;
+  background-color: #676767;
+}
+
+.todo .tasks .task > p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.todo .tasks .task:hover {
+  box-shadow: 0 0 10px 0 #000752a9;
+  border: 2px solid #2a6fd7;
+  transform: scale(1.02);
+}
+
+.done {
+  opacity: 0.6;
+  order: 99999990 !important;
+  background: url(./sunset.png) center bottom no-repeat !important;
+  border: 3px solid white !important;
+  background-color: #635b57 !important;
+}
+
+.todo .tasks .task > div {
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.todo .tasks .task .del {
+  color: white;
+  background-color: #fd3627;
+  padding: 5px 7px;
+  font-size: 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.todo .tasks .task .del:hover {
+  background-color: #df2f22;
+}
+
+.todo .tasks .task .right {
+  color: white;
+  background-color: #2465c7;
+  padding: 5px 7px;
+  font-size: 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin: 0;
+  transition: 0.3s;
+}
+
+.todo .tasks .task .right:hover {
+  background-color: #2055a5;
+}
+
+.todo .tasks > p {
+  background-color: white;
+  border-radius: 6px;
+  margin: 0;
+  padding: 10px 15px;
+  text-align: center;
+  font-weight: bold;
+  border: 3px solid white;
+  transition: 0.3s;
+}
+
+.todo .tasks > p:hover {
+  border: 3px solid #f56538;
+}
+
+.border-red {
+  border: 3px solid red !important;
+}
+
+.opacity0 {
+  opacity: 0 !important;
+}
+
+@keyframes rightBullet {
+  0%,
+  100% {
+    bottom: -13px;
+    left: 50%;
+    background-color: #06101e;
+    height: 10px;
+    width: 10px;
+    border: 3px solid white;
+    border-radius: 50%;
+  }
+  40% {
+    bottom: 13px;
+    left: 120%;
+    border: 3px solid white;
+    background-color: transparent;
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+  }
+  80% {
+    bottom: -7px;
+    left: 75%;
+    border: 3px solid white;
+    background-color: transparent;
+    height: 115%;
+    width: 130px;
+    border-radius: 0%;
+    border-left: none;
+  }
+}
+
+@keyframes leftBullet {
+  0%,
+  100% {
+    bottom: -7px;
+    left: 50%;
+    background-color: white;
+    border: 2px solid white;
+    height: 0;
+    width: 200px;
+    border-radius: 6px;
+  }
+  20% {
+    width: 0;
+  }
+  40% {
+    bottom: 13px;
+    left: -15%;
+    border: 3px solid white;
+    background-color: transparent;
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+  }
+  80% {
+    bottom: -7px;
+    left: 23%;
+    border: 3px solid white;
+    background-color: transparent;
+    height: 115%;
+    width: 130px;
+    border-radius: 0%;
+    border-right: none;
+  }
+}
